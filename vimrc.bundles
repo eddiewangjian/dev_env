@@ -16,6 +16,7 @@ Bundle 'scrooloose/nerdtree'
 
 " auto complete, close YouCompleteMe version syntax check in vimrc
 Bundle 'vim-scripts/ctags.vim'
+Bundle 'vim-scripts/taglist.vim'
 Bundle 'vim-scripts/OmniCppComplete'
 "Bundle 'Valloric/YouCompleteMe'
 
@@ -62,3 +63,4 @@ if filereadable(expand("~/.vimrc.bundles.local"))
 endif
 
 filetype on
+
