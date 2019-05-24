@@ -178,8 +178,10 @@ endif
 
 "设置目录树的快捷开关键为F5
 nmap <F5> :NERDTreeToggle<cr>
-" 文件列表设置
-let g:NERDTreeWinSize=40        " 宽度
+"文件列表设置宽度
+let g:NERDTreeWinSize=40
+"当剩余的窗口都不是文件编辑窗口时，自动退出vim
+autocmd BufEnter * if 0 == len(filter(range(1, winnr('$')), 'empty(getbufvar(winbufnr(v:val), "&bt"))')) | qa! | endif
 
 "支持代码自动补全
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
