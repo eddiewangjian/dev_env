@@ -176,10 +176,12 @@ if filereadable(expand("~/.vimrc.bundles"))
 	source ~/.vimrc.bundles
 endif
 
+"在vim启动的时候默认开启NERDTree
+autocmd VimEnter * NERDTree
 "设置目录树的快捷开关键为F5
 nmap <F5> :NERDTreeToggle<cr>
 "文件列表设置宽度
-let g:NERDTreeWinSize=40
+let g:NERDTreeWinSize=35
 "当剩余的窗口都不是文件编辑窗口时，自动退出vim
 autocmd BufEnter * if 0 == len(filter(range(1, winnr('$')), 'empty(getbufvar(winbufnr(v:val), "&bt"))')) | qa! | endif
 
@@ -213,7 +215,7 @@ set autochdir
 "默认打开Taglist
 map <F2> :TlistToggle<CR>
 let Tlist_Sort_Type = "name"    " 按照名称排序
-let Tlist_Auto_Open=0
+let Tlist_Auto_Open=1           " 开启编辑文档后自动打开taglist
 let Tlist_Ctags_Cmd = '/usr/bin/ctags'
 let Tlist_File_Fold_Auto_Close = 1
 let Tlist_Exit_OnlyWindow = 1   " 如果taglist窗口是最后一个窗口，则退出vim
