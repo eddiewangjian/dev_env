@@ -8,6 +8,11 @@ fi
 # command 
 export GREP_OPTIONS='--color=auto'
 
+#调整git单文件支持较大文件上传
+git config --global sendpack.sideband false
+#调整git单文件上传限制为500M
+git config --global http.postBuffer 524288000
+
 #================================ wangjian22 alias =================================
 # common alias
 alias vi="vim"
