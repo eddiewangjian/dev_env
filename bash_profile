@@ -29,7 +29,7 @@ alias sbp="source ~/.bash_profile"
 alias cl="cd && cd -"
 alias fpwd='__fpwd(){ echo "ftp://`hostname`:`pwd`/$1";};__fpwd'
 alias fscp='__fpwd(){ echo "scp map@`hostname`:`pwd`/$1";};__fpwd'
-alias protoc='__pb(){ /home/map/tools/protobuf/bin/protoc -I=$1 --cpp_out=$1 $1/*.proto;};__pb'
+#alias protoc='__pb(){ /home/map/tools/protobuf/bin/protoc -I=$1 --cpp_out=$1 $1/*.proto;};__pb'
 
 #-------------------------------- tools ---------------------------------
 #调整git单文件支持较大文件上传
