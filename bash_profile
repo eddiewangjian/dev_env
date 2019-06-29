@@ -17,7 +17,6 @@ export PATH=/usr/bin:$PATH
 # gcc include for c++ CPLUS_INCLUDE_PATH
 
 # gcc link dir for .so LD_LIBRARY_PATH
-export LD_LIBRARY_PATH=/usr/local/lib64/:$LD_LIBRARY_PATH
 
 # gcc link dir for .a LIBRARY_PATH
 
