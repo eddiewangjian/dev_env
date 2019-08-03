@@ -230,3 +230,6 @@ let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:20,results:40'
 let g:NERDTreeChDirMode = 2
 let g:ctrlp_working_path_mode = 'rw'
 
+"每行超过字符后提示
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+match OverLength /\%121v.*/
