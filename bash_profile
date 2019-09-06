@@ -7,6 +7,7 @@ fi
 
 #------------------------------- command --------------------------------
 export GREP_OPTIONS='--color=auto'
+git config --global color.ui auto
 
 #------------------------------- env var --------------------------------
 # executable path for bin PATH
