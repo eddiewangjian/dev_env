@@ -206,6 +206,7 @@ nmap <F8> :YcmCompleter GoToDefinitionElseDeclaration<CR>
 "colorscheme NeoSolarized
 "colorscheme solarized
 "colorscheme molokai
+colorscheme desert "blue
 
 "设置ctag代码跳转或补全
 "ctags -R --c++-kinds=+px --fields=+iaS --extra=+q
@@ -215,7 +216,7 @@ set autochdir
 "默认打开Taglist
 map <F3> :TlistToggle<CR>
 let Tlist_Sort_Type = "name"    " 按照名称排序
-let Tlist_Auto_Open=1           " 开启编辑文档后自动打开taglist
+let Tlist_Auto_Open=0           " 开启编辑文档后自动打开taglist
 let Tlist_Ctags_Cmd = '/usr/bin/ctags'
 let Tlist_File_Fold_Auto_Close = 1
 let Tlist_Exit_OnlyWindow = 1   " 如果taglist窗口是最后一个窗口，则退出vim
@@ -231,5 +232,5 @@ let g:NERDTreeChDirMode = 2
 let g:ctrlp_working_path_mode = 'rw'
 
 "每行超过字符后提示
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%121v.*/
+"highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+"match OverLength /\%126v.*/
