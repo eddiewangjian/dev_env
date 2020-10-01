@@ -176,6 +176,12 @@ if filereadable(expand("~/.vimrc.bundles"))
 	source ~/.vimrc.bundles
 endif
 
+"设置主题
+"colorscheme NeoSolarized
+"colorscheme solarized
+"colorscheme molokai
+colorscheme desert
+
 "在vim启动的时候默认开启NERDTree
 "autocmd VimEnter * NERDTree
 "设置目录树的快捷开关键为F5
@@ -185,52 +191,75 @@ let g:NERDTreeWinSize=35
 "当剩余的窗口都不是文件编辑窗口时，自动退出vim
 autocmd BufEnter * if 0 == len(filter(range(1, winnr('$')), 'empty(getbufvar(winbufnr(v:val), "&bt"))')) | qa! | endif
 
-"支持代码自动补全
-let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
-let g:ycm_key_invoke_completion = '<C-a>'
-
+"支持YouCompleteMe代码自动补全
+"let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+"let g:ycm_key_invoke_completion = '<C-a>'
 "关闭youcompleteme中的语法检查问题提示
-"let g:ycm_enable_diagnostic_signs = 0
+let g:ycm_enable_diagnostic_signs = 0
 "关闭youcompleteme中的语法检查问题高亮
-"let g:ycm_enable_diagnostic_highlighting = 0
+let g:ycm_enable_diagnostic_highlighting = 0
 
 "syntaxstatic开启语法检查快捷键
-"map <F2> :SyntasticToggleMode<CR>
+"map <<F4>> :SyntasticToggleMode<CR>
+"let g:syntastic_check_on_open = 0
+"let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
+"let g:syntastic_always_populate_loc_list = 0
+"let g:syntastic_auto_loc_list = 0
+"let g:syntastic_check_on_wq = 0
 
 "设置自动跳转的快捷键
 nmap <F6> :YcmCompleter GoToDeclaration<CR>
 nmap <F7> :YcmCompleter GoToDefinition<CR>
 nmap <F8> :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
-"设置主题
-"colorscheme NeoSolarized
-"colorscheme solarized
-"colorscheme molokai
-colorscheme desert "blue
-
-"设置ctag代码跳转或补全
+"设置ctag代码跳转或补全（使用ctags -R . 为当前目录和子目录设置tag）
 "ctags -R --c++-kinds=+px --fields=+iaS --extra=+q
 set tags=./tags,tags;$HOME
 set autochdir
 
-"默认打开Taglist
-map <F3> :TlistToggle<CR>
-let Tlist_Sort_Type = "name"    " 按照名称排序
-let Tlist_Auto_Open=0           " 开启编辑文档后自动打开taglist
-let Tlist_Ctags_Cmd = '/usr/bin/ctags'
-let Tlist_File_Fold_Auto_Close = 1
-let Tlist_Exit_OnlyWindow = 1   " 如果taglist窗口是最后一个窗口，则退出vim
-let Tlist_Use_Right_Window = 1  " 在右侧窗口中显示taglist窗口
-let Tlist_Compart_Format = 1    " 压缩方式
-let Tlist_Exist_OnlyWindow = 1  " 如果只有一个buffer，kill窗口也kill掉buffer
-let Tlist_Show_One_File=1       " 不同时显示多个文件的tag，只显示当前文件的
-let Tlist_WinWidth = 35
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:20,results:40'
-let g:NERDTreeChDirMode = 2
-let g:ctrlp_working_path_mode = 'rw'
+""默认打开Taglist
+"map <F3> :TlistToggle<CR>
+"let Tlist_Sort_Type = "name"    " 按照名称排序
+"let Tlist_Auto_Open=0           " 开启编辑文档后自动打开taglist
+""let Tlist_Ctags_Cmd = '/usr/bin/ctags'
+"let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'
+"let Tlist_File_Fold_Auto_Close = 1
+"let Tlist_Exit_OnlyWindow = 1   " 如果taglist窗口是最后一个窗口，则退出vim
+"let Tlist_Use_Right_Window = 1  " 在右侧窗口中显示taglist窗口
+"let Tlist_Compart_Format = 1    " 压缩方式
+"let Tlist_Exist_OnlyWindow = 1  " 如果只有一个buffer，kill窗口也kill掉buffer
+"let Tlist_Show_One_File=1       " 不同时显示多个文件的tag，只显示当前文件的
+"let Tlist_WinWidth = 35
+"let g:ctrlp_map = '<c-p>'
+"let g:ctrlp_cmd = 'CtrlP'
+"let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:20,results:40'
+"let g:NERDTreeChDirMode = 2
+"let g:ctrlp_working_path_mode = 'rw'
+
+" 将开启tagbar的快捷键设置为F3
+nmap <F3> :TagbarToggle<CR>
+" 设置ctags所在路径
+let g:tagbar_ctags_bin='/usr/local/bin/ctags'
+" 设置tagbar的宽度
+let g:tagbar_width=30
+" 在某些情况下自动打开tagbar
+"autocmd BufReadPost *.java,*.cpp,*.c,*.h,*.hpp,*.cc,*.cxx call tagbar#autoopen()
+
+" javacomplete 自动补全功能
+" 設定此行在 java 檔案中，就可按(ctrl + x) + (ctrl + o) 自動補全
+setlocal omnifunc=javacomplete#Complete
+" 當檔案為副檔名為 java 動作
+" mode的狀態下,按"."會替換成以下指令，換言之，與ide相同當按"."會自動補全
+autocmd Filetype java,jsp set omnifunc=javacomplete#Complete
+autocmd Filetype java,jsp set completefunc=javacomplete#CompleteParamsInf
+inoremap <buffer> <C-X><C-U> <C-X><C-U><C-P> 
+inoremap <buffer> <C-S-Space> <C-X><C-U><C-P>
+autocmd Filetype java,javascript,jsp inoremap <buffer> . .<C-X><C-O><C-P>
+" 設定額外 include 的 classpath
+"let b:classpath="/opt/apache-tomcat-8.0.30/lib/*"
 
 "每行超过字符后提示
 "highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 "match OverLength /\%126v.*/
+
+
