@@ -273,19 +273,25 @@ let g:tagbar_width=30
 " 在某些情况下自动打开tagbar
 "autocmd BufReadPost *.java,*.cpp,*.c,*.h,*.hpp,*.cc,*.cxx call tagbar#autoopen()
 
-" --------------- javacomplete ----------------
-" javacomplete 自动补全功能
+"" --------------- javacomplete ----------------
+"" javacomplete 自动补全功能
+"" 設定此行在 java 檔案中，就可按(ctrl + x) + (ctrl + o) 自動補全
+"setlocal omnifunc=javacomplete#Complete
+"" 當檔案為副檔名為 java 動作
+"" mode的狀態下,按"."會替換成以下指令，換言之，與ide相同當按"."會自動補全
+"autocmd Filetype java,jsp set omnifunc=javacomplete#Complete
+"autocmd Filetype java,jsp set completefunc=javacomplete#CompleteParamsInf
+"inoremap <buffer> <C-X><C-U> <C-X><C-U><C-P> 
+"inoremap <buffer> <C-S-Space> <C-X><C-U><C-P>
+"autocmd Filetype java,javascript,jsp inoremap <buffer> . .<C-X><C-O><C-P>
+"" 設定額外 include 的 classpath
+""let b:classpath="/opt/apache-tomcat-8.0.30/lib/*"
+
+" --------------- javacomplete2 ----------------
+" javacomplete2 自动补全功能
 " 設定此行在 java 檔案中，就可按(ctrl + x) + (ctrl + o) 自動補全
 setlocal omnifunc=javacomplete#Complete
-" 當檔案為副檔名為 java 動作
-" mode的狀態下,按"."會替換成以下指令，換言之，與ide相同當按"."會自動補全
-autocmd Filetype java,jsp set omnifunc=javacomplete#Complete
-autocmd Filetype java,jsp set completefunc=javacomplete#CompleteParamsInf
-inoremap <buffer> <C-X><C-U> <C-X><C-U><C-P> 
-inoremap <buffer> <C-S-Space> <C-X><C-U><C-P>
-autocmd Filetype java,javascript,jsp inoremap <buffer> . .<C-X><C-O><C-P>
-" 設定額外 include 的 classpath
-"let b:classpath="/opt/apache-tomcat-8.0.30/lib/*"
+autocmd Filetype java,javascript,jsp inoremap <buffer> <Tab> <C-X><C-O><C-P>
 
 "每行超过字符后提示
 "highlight OverLength ctermbg=red ctermfg=white guibg=#592929
