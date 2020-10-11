@@ -160,14 +160,12 @@ func SetTitle()
         call append(line(".")+7, "")
     endif
 
-
 endfunc 
 
 "新建文件后，自动定位到文件末尾
 autocmd BufNewFile * normal G
 
-
-"vim插件管理工具vundle
+"-------------- vim插件管理工具vundle --------------
 filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -176,12 +174,13 @@ if filereadable(expand("~/.vimrc.bundles"))
 	source ~/.vimrc.bundles
 endif
 
-"设置主题
+"------------------ 设置主题 --------------------
 "colorscheme NeoSolarized
 "colorscheme solarized
 "colorscheme molokai
 colorscheme desert
 
+" ----------------- 左侧导航栏NERDTree -----------------
 "在vim启动的时候默认开启NERDTree
 "autocmd VimEnter * NERDTree
 "设置目录树的快捷开关键为F5
@@ -191,15 +190,52 @@ let g:NERDTreeWinSize=35
 "当剩余的窗口都不是文件编辑窗口时，自动退出vim
 autocmd BufEnter * if 0 == len(filter(range(1, winnr('$')), 'empty(getbufvar(winbufnr(v:val), "&bt"))')) | qa! | endif
 
+" ---------------- 代码只能补全OmniCppComplete ----------------
+"设置ctag代码跳转或补全（使用ctags -R . 为当前目录和子目录设置tag）
+"ctags -R --c++-kinds=+px --fields=+iaS --extra=+q
+set tags=./tags,tags;HOME
+set autochdir
+
+"set nocp
+"filetype plugin on
+""通过F12生成tags
+""map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --languages=c++ -I .<CR>
+""map <C-F12> :!ctags -I __THROW --file-scope=yes --langmap=c:+.h --languages=c,c++ --links=yes --c-kinds=+p --fields=+S -R -f ~/.vim/systags /usr/include /usr/local/include .<CR>
+"set completeopt=menu,menuone
+"set omnifunc=syntaxcomplete#Complete
+"let OmniCpp_GlobalScopeSearch = 1  " 0 or 1
+"let OmniCpp_NamespaceSearch = 2   " 0 ,  1 or 2
+"let OmniCpp_DefaultNamespace=["std"]
+"let OmniCpp_DisplayMode = 1
+"let OmniCpp_ShowScopeInAbbr = 0
+""打开显示函数原型
+"let OmniCpp_ShowPrototypeInAbbr = 1
+"let OmniCpp_ShowAccess = 1
+""输入.后自动触发补全
+"let OmniCpp_MayCompleteDot = 1
+""输入->后自动触发补全
+"let OmniCpp_MayCompleteArrow = 1
+""输入::后自动触发补全
+"let OmniCpp_MayCompleteScope = 1
+""自动弹出时自动跳至第一个
+"let OmniCpp_SelectFirstItem = 2
+""tags路径
+"set tags+=/home/work/wangjian/ai_brain_server_cpp/src/tags
+
+" ---------------- 代码补全YouCompleteMe ----------------
 "支持YouCompleteMe代码自动补全
-"let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 "let g:ycm_key_invoke_completion = '<C-a>'
 "关闭youcompleteme中的语法检查问题提示
 let g:ycm_enable_diagnostic_signs = 0
 "关闭youcompleteme中的语法检查问题高亮
 let g:ycm_enable_diagnostic_highlighting = 0
+"设置自动跳转的快捷键
+nmap <F6> :YcmCompleter GoToDeclaration<CR>
+nmap <F7> :YcmCompleter GoToDefinition<CR>
+nmap <F8> :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
-"syntaxstatic开启语法检查快捷键
+" ------------- syntaxstatic开启语法检查 --------------
 "map <<F4>> :SyntasticToggleMode<CR>
 "let g:syntastic_check_on_open = 0
 "let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
@@ -207,17 +243,7 @@ let g:ycm_enable_diagnostic_highlighting = 0
 "let g:syntastic_auto_loc_list = 0
 "let g:syntastic_check_on_wq = 0
 
-"设置自动跳转的快捷键
-nmap <F6> :YcmCompleter GoToDeclaration<CR>
-nmap <F7> :YcmCompleter GoToDefinition<CR>
-nmap <F8> :YcmCompleter GoToDefinitionElseDeclaration<CR>
-
-"设置ctag代码跳转或补全（使用ctags -R . 为当前目录和子目录设置tag）
-"ctags -R --c++-kinds=+px --fields=+iaS --extra=+q
-set tags=./tags,tags;$HOME
-set autochdir
-
-""默认打开Taglist
+" ---------------- Taglist ---------------
 "map <F3> :TlistToggle<CR>
 "let Tlist_Sort_Type = "name"    " 按照名称排序
 "let Tlist_Auto_Open=0           " 开启编辑文档后自动打开taglist
@@ -236,15 +262,18 @@ set autochdir
 "let g:NERDTreeChDirMode = 2
 "let g:ctrlp_working_path_mode = 'rw'
 
+" ---------------- tagbar ----------------
 " 将开启tagbar的快捷键设置为F3
 nmap <F3> :TagbarToggle<CR>
 " 设置ctags所在路径
-let g:tagbar_ctags_bin='/usr/local/bin/ctags'
+let g:tagbar_ctags_bin='/usr/bin/ctags'
+"let g:tagbar_ctags_bin='/usr/local/bin/ctags'
 " 设置tagbar的宽度
 let g:tagbar_width=30
 " 在某些情况下自动打开tagbar
 "autocmd BufReadPost *.java,*.cpp,*.c,*.h,*.hpp,*.cc,*.cxx call tagbar#autoopen()
 
+" --------------- javacomplete ----------------
 " javacomplete 自动补全功能
 " 設定此行在 java 檔案中，就可按(ctrl + x) + (ctrl + o) 自動補全
 setlocal omnifunc=javacomplete#Complete

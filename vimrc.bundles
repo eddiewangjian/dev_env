@@ -10,18 +10,11 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " Define bundles via Github repos
-
-" dir tree
 Bundle 'scrooloose/nerdtree'
-" syntax check
-"Bundle 'scrooloose/syntastic'
-
-" auto complete, close YouCompleteMe version syntax check in vimrc
 Bundle 'vim-scripts/ctags.vim'
-Bundle 'vim-scripts/taglist.vim'
-Bundle 'vim-scripts/OmniCppComplete'
+Bundle 'vim-scripts/AutoComplPop'
 Bundle 'Valloric/YouCompleteMe'
-"Bundle 'kien/ctrlp.vim'
+Bundle 'kien/ctrlp.vim'
 Bundle 'majutsushi/tagbar'
 Bundle 'vim-scripts/javacomplete'
 
@@ -29,10 +22,13 @@ Bundle 'vim-scripts/javacomplete'
 Bundle 'NeoSolarized'
 Bundle 'solarized'
 Bundle 'molokai'
+Bundle 'desert'
 
+"Bundle 'scrooloose/syntastic'
+"Bundle 'vim-scripts/taglist.vim'
+"Bundle 'vim-scripts/OmniCppComplete'
 "Bundle 'christoomey/vim-run-interactive'
 "Bundle 'danro/rename.vim'
-"Bundle 'majutsushi/tagbar'
 "Bundle 'kchmck/vim-coffee-script'
 "Bundle 'pbrisbin/vim-mkdir'
 "Bundle 'slim-template/vim-slim'
