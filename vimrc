@@ -222,18 +222,18 @@ set autochdir
 ""tags路径
 "set tags+=/home/work/wangjian/ai_brain_server_cpp/src/tags
 
-" ---------------- 代码补全YouCompleteMe ----------------
-"支持YouCompleteMe代码自动补全
-let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
-"let g:ycm_key_invoke_completion = '<C-a>'
-"关闭youcompleteme中的语法检查问题提示
-let g:ycm_enable_diagnostic_signs = 0
-"关闭youcompleteme中的语法检查问题高亮
-let g:ycm_enable_diagnostic_highlighting = 0
-"设置自动跳转的快捷键
-nmap <F6> :YcmCompleter GoToDeclaration<CR>
-nmap <F7> :YcmCompleter GoToDefinition<CR>
-nmap <F8> :YcmCompleter GoToDefinitionElseDeclaration<CR>
+"" ---------------- 代码补全YouCompleteMe ----------------
+""支持YouCompleteMe代码自动补全
+"let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+""let g:ycm_key_invoke_completion = '<C-a>'
+""关闭youcompleteme中的语法检查问题提示
+"let g:ycm_enable_diagnostic_signs = 0
+""关闭youcompleteme中的语法检查问题高亮
+"let g:ycm_enable_diagnostic_highlighting = 0
+""设置自动跳转的快捷键
+"nmap <F6> :YcmCompleter GoToDeclaration<CR>
+"nmap <F7> :YcmCompleter GoToDefinition<CR>
+"nmap <F8> :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " ------------- syntaxstatic开启语法检查 --------------
 "map <<F4>> :SyntasticToggleMode<CR>
