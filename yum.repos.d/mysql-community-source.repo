@@ -1,0 +1,34 @@
+[mysql80-community-source]
+name=MySQL 8.0 Community Server - Source
+baseurl=http://repo.mysql.com/yum/mysql-8.0-community/el/8/SRPMS
+enabled=0
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-mysql
+
+[mysql-connectors-community-source]
+name=MySQL Connectors Community - Source
+baseurl=http://repo.mysql.com/yum/mysql-connectors-community/el/8/SRPMS
+enabled=0
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-mysql
+
+[mysql-tools-community-source]
+name=MySQL Tools Community - Source
+baseurl=http://repo.mysql.com/yum/mysql-tools-community/el/8/SRPMS
+enabled=0
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-mysql
+
+[mysql-tools-preview-source]
+name=MySQL Tools Preview - Source
+baseurl=http://repo.mysql.com/yum/mysql-tools-preview/el/8/SRPMS
+enabled=0
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-mysql
+
+[mysql-cluster-8.0-community-source]
+name=MySQL Cluster 8.0 Community - Source
+baseurl=http://repo.mysql.com/yum/mysql-cluster-8.0-community/el/8/SRPMS
+enabled=0
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-mysql
