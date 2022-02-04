@@ -6,6 +6,11 @@
 #fi
 
 #------------------------------- command --------------------------------
+# for macos
+#export PS1='[%n@%m %1~] '
+# for linux
+#export PS1='[\u@\h \W] '
+
 export GREP_OPTIONS='--color=auto'
 git config --global color.ui auto
 
