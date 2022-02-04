@@ -1,15 +1,19 @@
 # .bash_profile
 
 # Get the aliases and functions
-if [ -f ~/.bashrc ]; then
-	. ~/.bashrc
-fi
+#if [ -f ~/.bashrc ]; then
+#	. ~/.bashrc
+#fi
 
 #------------------------------- command --------------------------------
 export GREP_OPTIONS='--color=auto'
 git config --global color.ui auto
 
 #------------------------------- env var --------------------------------
+# terminal color
+export CLICOLOR=1
+
+# debug core size
 ulimit -c unlimited
 
 # executable path for bin PATH
@@ -44,5 +48,10 @@ alias pbpy='__pb(){ /home/work/common_util/bin/protoc --proto_path=./ --python_o
 git config --global sendpack.sideband false
 #调整git单文件上传限制为500M
 git config --global http.postBuffer 524288000
+
+#----------------------------- outer alias ------------------------------
+alias mbp='vi ~/shared_dir/my_bash_profile'
+source /home/work/shared_dir/my_bash_profile
+
 
 
